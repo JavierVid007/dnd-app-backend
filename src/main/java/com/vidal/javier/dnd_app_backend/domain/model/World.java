@@ -12,6 +12,6 @@ public class World {
     private UUID id;
     private String name;
 
-    private UUID userId;
+    private User user;
 
 }
