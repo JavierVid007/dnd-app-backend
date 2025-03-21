@@ -1,7 +1,8 @@
-package com.vidal.javier.dnd_app_backend.infrastructure.mapper;
+package com.vidal.javier.dnd_app_backend.infrastructure.conversion.mapper;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.vidal.javier.dnd_app_backend.persistence.entity.WorldEntity;
@@ -10,27 +11,34 @@ import com.vidal.javier.dnd_app_backend.domain.model.World;
 @Component
 public class WorldMapper {
 
-    public static World toDomain(WorldEntity entity) {
+    private final UserMapper userMapper;
+
+    @Autowired
+    public WorldMapper(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
+    public World toDomain(WorldEntity entity) {
         return new World(
                 entity.getId(),
                 entity.getName(),
-                UserMapper.toDomain(entity.getUser()));
+                userMapper.toDomain(entity.getUser()));
     }
 
-    public static WorldEntity toEntity(World model) {
+    public WorldEntity toEntity(World model) {
         return new WorldEntity(
                 model.getId(),
                 model.getName(),
-                UserMapper.toEntity(model.getUser()));
+                userMapper.toEntity(model.getUser()));
     }
 
-    public static List<World> worldListToDomain(List<WorldEntity> entities) {
+    public List<World> worldListToDomain(List<WorldEntity> entities) {
         return entities.stream()
                 .map(entity -> toDomain(entity))
                 .toList();
     }
 
-    public static List<WorldEntity> worldListToEntity(List<World> models) {
+    public List<WorldEntity> worldListToEntity(List<World> models) {
         return models.stream()
                 .map(model -> toEntity(model))
                 .toList();

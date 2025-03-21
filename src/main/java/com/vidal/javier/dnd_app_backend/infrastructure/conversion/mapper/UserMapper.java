@@ -1,7 +1,8 @@
-package com.vidal.javier.dnd_app_backend.infrastructure.mapper;
+package com.vidal.javier.dnd_app_backend.infrastructure.conversion.mapper;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.vidal.javier.dnd_app_backend.domain.model.User;
@@ -10,7 +11,16 @@ import com.vidal.javier.dnd_app_backend.persistence.entity.UserEntity;
 @Component
 public class UserMapper {
 
-    public static User toDomain(UserEntity entity) {
+    private final CharacterMapper characterMapper;
+    private final WorldMapper worldMapper;
+
+    @Autowired
+    public UserMapper(CharacterMapper characterMapper, WorldMapper worldMapper) {
+        this.characterMapper = characterMapper;
+        this.worldMapper = worldMapper;
+    }
+
+    public User toDomain(UserEntity entity) {
         return new User(
                 entity.getId(),
                 entity.getUsername(),
@@ -24,11 +34,11 @@ public class UserMapper {
                 entity.getCreatedAt(),
                 entity.getUpdatedAt(),
                 entity.getLastLogin(),
-                CharacterMapper.characterListToDomain(entity.getCharacters()),
-                WorldMapper.worldListToDomain(entity.getWorlds()));
+                characterMapper.characterListToDomain(entity.getCharacters()),
+                worldMapper.worldListToDomain(entity.getWorlds()));
     }
 
-    public static UserEntity toEntity(User model) {
+    public UserEntity toEntity(User model) {
         return new UserEntity(
                 model.getId(),
                 model.getUsername(),
@@ -42,17 +52,17 @@ public class UserMapper {
                 model.getCreatedAt(),
                 model.getUpdatedAt(),
                 model.getLastLogin(),
-                CharacterMapper.characterListToEntity(model.getCharacters()),
-                WorldMapper.worldListToEntity(model.getWorlds()));
+                characterMapper.characterListToEntity(model.getCharacters()),
+                worldMapper.worldListToEntity(model.getWorlds()));
     }
 
-    public static List<User> userListToDomain(List<UserEntity> entities) {
+    public List<User> userListToDomain(List<UserEntity> entities) {
         return entities.stream()
                 .map(entity -> toDomain(entity))
                 .toList();
     }
 
-    public static List<UserEntity> userListToEntity(List<User> models) {
+    public List<UserEntity> userListToEntity(List<User> models) {
         return models.stream()
                 .map(model -> toEntity(model))
                 .toList();
