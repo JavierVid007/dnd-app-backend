@@ -9,27 +9,29 @@ import org.springframework.stereotype.Repository;
 
 import com.vidal.javier.dnd_app_backend.domain.model.User;
 import com.vidal.javier.dnd_app_backend.domain.repository.UserRepository;
-import com.vidal.javier.dnd_app_backend.infrastructure.mapper.UserMapper;
+import com.vidal.javier.dnd_app_backend.infrastructure.conversion.service.UserConversionService;
 import com.vidal.javier.dnd_app_backend.persistence.repository.UserEntityRepository;
 
 @Repository
 public class UserRepositoryAdapter implements UserRepository {
 
     private final UserEntityRepository repository;
+    private final UserConversionService conversionService;
 
     @Autowired
-    public UserRepositoryAdapter(UserEntityRepository repository) {
+    public UserRepositoryAdapter(UserEntityRepository repository, UserConversionService conversionService) {
         this.repository = repository;
+        this.conversionService = conversionService;
     }
 
     @Override
     public List<User> findAll() {
-        return UserMapper.userListToDomain(repository.findAll());
+        return conversionService.userListToDomain(repository.findAll());
     }
 
     @Override
     public Optional<User> findById(UUID id) {
-        return repository.findById(id).map(UserMapper::toDomain);
+        return repository.findById(id).map(conversionService::toDomain);
     }
 
     @Override
@@ -39,7 +41,7 @@ public class UserRepositoryAdapter implements UserRepository {
 
     @Override
     public Optional<User> findByUsername(String username) {
-        return repository.findByUsername(username).map(UserMapper::toDomain);
+        return repository.findByUsername(username).map(conversionService::toDomain);
     }
 
     @Override
@@ -49,7 +51,7 @@ public class UserRepositoryAdapter implements UserRepository {
 
     @Override
     public Optional<User> findByEmail(String email) {
-        return repository.findByEmail(email).map(UserMapper::toDomain);
+        return repository.findByEmail(email).map(conversionService::toDomain);
     }
 
     @Override
@@ -59,13 +61,13 @@ public class UserRepositoryAdapter implements UserRepository {
 
     @Override
     public User save(User user) {
-        return UserMapper.toDomain(repository.save(UserMapper.toEntity(user)));
+        return conversionService.toDomain(repository.save(conversionService.toEntity(user)));
     }
 
     @Override
     public boolean update(User user) {
         if (existsById(user.getId())) {
-            repository.save(UserMapper.toEntity(user));
+            repository.save(conversionService.toEntity(user));
             return true;
         }
         return false;
@@ -74,7 +76,7 @@ public class UserRepositoryAdapter implements UserRepository {
     @Override
     public boolean delete(User user) {
         if (existsById(user.getId())) {
-            repository.delete(UserMapper.toEntity(user));
+            repository.delete(conversionService.toEntity(user));
             return true;
         }
         return false;
