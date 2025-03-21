@@ -28,4 +28,6 @@ public interface UserRepository {
 
     boolean delete(User user);
 
+    boolean deleteById(UUID id);
+
 }

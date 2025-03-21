@@ -24,15 +24,15 @@ public class CharacterMapper {
                 UserMapper.toEntity(model.getUser()));
     }
 
-    public static List<Character> characterListToDomain(List<CharacterEntity> characters) {
-        return characters.stream()
-                .map(character -> toDomain(character))
+    public static List<Character> characterListToDomain(List<CharacterEntity> entities) {
+        return entities.stream()
+                .map(entity -> toDomain(entity))
                 .toList();
     }
 
-    public static List<CharacterEntity> characterListToEntity(List<Character> characters) {
-        return characters.stream()
-                .map(character -> toEntity(character))
+    public static List<CharacterEntity> characterListToEntity(List<Character> models) {
+        return models.stream()
+                .map(model -> toEntity(model))
                 .toList();
     }
 

@@ -24,15 +24,15 @@ public class WorldMapper {
                 UserMapper.toEntity(model.getUser()));
     }
 
-    public static List<World> worldListToDomain(List<WorldEntity> worlds) {
-        return worlds.stream()
-                .map(world -> toDomain(world))
+    public static List<World> worldListToDomain(List<WorldEntity> entities) {
+        return entities.stream()
+                .map(entity -> toDomain(entity))
                 .toList();
     }
 
-    public static List<WorldEntity> worldListToEntity(List<World> worlds) {
-        return worlds.stream()
-                .map(world -> toEntity(world))
+    public static List<WorldEntity> worldListToEntity(List<World> models) {
+        return models.stream()
+                .map(model -> toEntity(model))
                 .toList();
     }
 

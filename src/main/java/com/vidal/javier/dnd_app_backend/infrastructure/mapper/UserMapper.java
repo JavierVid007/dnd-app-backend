@@ -1,5 +1,7 @@
 package com.vidal.javier.dnd_app_backend.infrastructure.mapper;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.vidal.javier.dnd_app_backend.domain.model.User;
@@ -42,6 +44,18 @@ public class UserMapper {
                 model.getLastLogin(),
                 CharacterMapper.characterListToEntity(model.getCharacters()),
                 WorldMapper.worldListToEntity(model.getWorlds()));
+    }
+
+    public static List<User> userListToDomain(List<UserEntity> entities) {
+        return entities.stream()
+                .map(entity -> toDomain(entity))
+                .toList();
+    }
+
+    public static List<UserEntity> userListToEntity(List<User> models) {
+        return models.stream()
+                .map(model -> toEntity(model))
+                .toList();
     }
 
 }
