@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.vidal.javier.dnd_app_backend.domain.model.Character;
 import com.vidal.javier.dnd_app_backend.infrastructure.conversion.mapper.CharacterMapper;
-import com.vidal.javier.dnd_app_backend.persistence.entity.CharacterEntity;
+import com.vidal.javier.dnd_app_backend.infrastructure.persistence.entity.CharacterEntity;
 
 @Service
 public class CharacterConversionService {

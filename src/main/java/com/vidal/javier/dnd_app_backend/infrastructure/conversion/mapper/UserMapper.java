@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.vidal.javier.dnd_app_backend.domain.model.User;
-import com.vidal.javier.dnd_app_backend.persistence.entity.UserEntity;
+import com.vidal.javier.dnd_app_backend.infrastructure.persistence.entity.UserEntity;
 
 @Component
 public class UserMapper {

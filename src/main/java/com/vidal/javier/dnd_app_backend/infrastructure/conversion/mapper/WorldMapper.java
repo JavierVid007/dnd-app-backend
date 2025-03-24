@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.vidal.javier.dnd_app_backend.persistence.entity.WorldEntity;
 import com.vidal.javier.dnd_app_backend.domain.model.World;
+import com.vidal.javier.dnd_app_backend.infrastructure.persistence.entity.WorldEntity;
 
 @Component
 public class WorldMapper {

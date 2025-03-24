@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.vidal.javier.dnd_app_backend.domain.model.User;
 import com.vidal.javier.dnd_app_backend.domain.repository.UserRepository;
 import com.vidal.javier.dnd_app_backend.infrastructure.conversion.service.UserConversionService;
-import com.vidal.javier.dnd_app_backend.persistence.repository.UserEntityRepository;
+import com.vidal.javier.dnd_app_backend.infrastructure.persistence.repository.UserEntityRepository;
 
 @Repository
 public class UserRepositoryAdapter implements UserRepository {

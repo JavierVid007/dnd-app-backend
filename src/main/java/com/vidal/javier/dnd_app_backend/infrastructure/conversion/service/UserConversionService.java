@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.vidal.javier.dnd_app_backend.domain.model.User;
 import com.vidal.javier.dnd_app_backend.infrastructure.conversion.mapper.UserMapper;
-import com.vidal.javier.dnd_app_backend.persistence.entity.UserEntity;
+import com.vidal.javier.dnd_app_backend.infrastructure.persistence.entity.UserEntity;
 
 @Service
 public class UserConversionService {

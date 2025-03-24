@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.vidal.javier.dnd_app_backend.domain.model.World;
 import com.vidal.javier.dnd_app_backend.infrastructure.conversion.mapper.WorldMapper;
-import com.vidal.javier.dnd_app_backend.persistence.entity.WorldEntity;
+import com.vidal.javier.dnd_app_backend.infrastructure.persistence.entity.WorldEntity;
 
 @Service
 public class WorldConversionService {

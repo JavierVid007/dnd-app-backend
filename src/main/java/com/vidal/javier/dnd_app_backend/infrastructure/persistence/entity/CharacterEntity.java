@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.persistence.entity;
+package com.vidal.javier.dnd_app_backend.infrastructure.persistence.entity;
 
 import java.util.UUID;
 
