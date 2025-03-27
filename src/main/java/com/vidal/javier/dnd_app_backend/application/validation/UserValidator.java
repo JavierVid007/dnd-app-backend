@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.vidal.javier.dnd_app_backend.domain.exception.InvalidEmailException;
-import com.vidal.javier.dnd_app_backend.domain.exception.InvalidPasswordException;
-import com.vidal.javier.dnd_app_backend.domain.exception.InvalidRoleException;
-import com.vidal.javier.dnd_app_backend.domain.exception.InvalidUserDataException;
-import com.vidal.javier.dnd_app_backend.domain.exception.InvalidUsernameException;
+import com.vidal.javier.dnd_app_backend.application.exception.ValidationException;
+import com.vidal.javier.dnd_app_backend.domain.exception.BadRequestException;
 import com.vidal.javier.dnd_app_backend.domain.model.Role;
 
 @Component
@@ -38,42 +35,42 @@ public class UserValidator {
             MultipartFile avatar) {
 
         if (username == null || username.isBlank()) {
-            throw new InvalidUsernameException("Username cannot be empty.");
+            throw new BadRequestException("Username cannot be empty.");
         } else if (username.length() < 4) {
-            throw new InvalidUsernameException("Username must have at least 4 characters.");
+            throw new ValidationException("Username must have at least 4 characters.");
         } else if (username.length() > 20) {
-            throw new InvalidUsernameException("Username can't have more than 20 characters.");
+            throw new ValidationException("Username can't have more than 20 characters.");
         }
 
         if (email == null || email.isBlank()) {
-            throw new InvalidEmailException("Email cannot be empty.");
+            throw new BadRequestException("Email cannot be empty.");
         } else if (!EMAIL_PATTERN.matcher(email).matches()) {
-            throw new InvalidEmailException("Invalid email value.");
+            throw new BadRequestException("Invalid email value.");
         }
 
         if (password == null || password.isBlank()) {
-            throw new InvalidPasswordException("Password cannot be empty.");
+            throw new BadRequestException("Password cannot be empty.");
         } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-            throw new InvalidPasswordException("Invalid password value.");
+            throw new ValidationException("Invalid password value.");
         }
 
         if (firstName != null && firstName.isBlank()) {
-            throw new InvalidUserDataException("First name cannot be empty.");
+            throw new BadRequestException("First name cannot be empty.");
         }
         if (lastName != null && lastName.isBlank()) {
-            throw new InvalidUserDataException("Last name cannot be empty.");
+            throw new BadRequestException("Last name cannot be empty.");
         }
         if (bio != null && bio.length() > 500) {
-            throw new InvalidUserDataException("Bio can't have more than 500 characters.");
+            throw new BadRequestException("Bio can't have more than 500 characters.");
         }
 
         if (role == null || role.isBlank()) {
-            throw new InvalidRoleException("Role cannot be empty.");
+            throw new BadRequestException("Role cannot be empty.");
         }
         try {
             Role.valueOf(role.toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new InvalidRoleException("Invalid role value.");
+            throw new BadRequestException("Invalid role value.");
         }
 
         imageValidator.validate(avatar);

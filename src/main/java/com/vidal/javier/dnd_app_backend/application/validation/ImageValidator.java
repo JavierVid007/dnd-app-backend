@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.vidal.javier.dnd_app_backend.domain.exception.InvalidAvatarFileException;
+import com.vidal.javier.dnd_app_backend.application.exception.ValidationException;
+import com.vidal.javier.dnd_app_backend.domain.exception.BadRequestException;
 
 @Component
 public class ImageValidator {
@@ -16,15 +17,15 @@ public class ImageValidator {
 
     public void validate(MultipartFile file) {
         if (file == null || file.isEmpty()) {
-            throw new InvalidAvatarFileException("Avatar image cannot be empty.");
+            throw new BadRequestException("Avatar image cannot be empty.");
         }
 
         if (!VALID_IMAGE_MIME_TYPES.contains(file.getContentType())) {
-            throw new InvalidAvatarFileException("Invalid avatar extension.");
+            throw new ValidationException("Invalid avatar extension.");
         }
 
         if (file.getSize() > MAX_AVATAR_SIZE) {
-            throw new InvalidAvatarFileException("Avatar image cannot exceed 5MB");
+            throw new ValidationException("Avatar image cannot exceed 5MB");
         }
     }
 }
