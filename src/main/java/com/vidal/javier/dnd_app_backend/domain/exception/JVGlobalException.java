@@ -6,8 +6,4 @@ public class JVGlobalException extends RuntimeException {
         super(message);
     }
 
-    public JVGlobalException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
 }
