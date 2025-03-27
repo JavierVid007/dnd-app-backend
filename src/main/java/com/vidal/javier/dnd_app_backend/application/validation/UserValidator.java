@@ -34,6 +34,22 @@ public class UserValidator {
             String role,
             MultipartFile avatar) {
 
+        validateUsername(username);
+
+        validateEmail(email);
+
+        validatePassword(password);
+
+        validateFirstName(firstName);
+        validateLastName(lastName);
+        validateBio(bio);
+
+        validateRole(role);
+
+        imageValidator.validate(avatar);
+    }
+
+    public void validateUsername(String username) {
         if (username == null || username.isBlank()) {
             throw new BadRequestException("Username cannot be empty.");
         } else if (username.length() < 4) {
@@ -41,29 +57,43 @@ public class UserValidator {
         } else if (username.length() > 20) {
             throw new ValidationException("Username can't have more than 20 characters.");
         }
+    }
 
+    public void validateEmail(String email) {
         if (email == null || email.isBlank()) {
             throw new BadRequestException("Email cannot be empty.");
         } else if (!EMAIL_PATTERN.matcher(email).matches()) {
             throw new BadRequestException("Invalid email value.");
         }
+    }
 
+    public void validatePassword(String password) {
         if (password == null || password.isBlank()) {
             throw new BadRequestException("Password cannot be empty.");
         } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
             throw new ValidationException("Invalid password value.");
         }
+    }
 
+    public void validateFirstName(String firstName) {
         if (firstName != null && firstName.isBlank()) {
             throw new BadRequestException("First name cannot be empty.");
         }
+    }
+
+    public void validateLastName(String lastName) {
         if (lastName != null && lastName.isBlank()) {
             throw new BadRequestException("Last name cannot be empty.");
         }
+    }
+
+    public void validateBio(String bio) {
         if (bio != null && bio.length() > 500) {
             throw new BadRequestException("Bio can't have more than 500 characters.");
         }
+    }
 
+    public void validateRole(String role) {
         if (role == null || role.isBlank()) {
             throw new BadRequestException("Role cannot be empty.");
         }
@@ -72,8 +102,6 @@ public class UserValidator {
         } catch (IllegalArgumentException e) {
             throw new BadRequestException("Invalid role value.");
         }
-
-        imageValidator.validate(avatar);
     }
 
 }
