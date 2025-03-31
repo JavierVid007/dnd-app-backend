@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.web.dto.request;
+package com.vidal.javier.dnd_app_backend.infrastructure.web.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

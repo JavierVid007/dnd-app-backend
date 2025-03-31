@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.domain.repository;
+package com.vidal.javier.dnd_app_backend.domain.port;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import com.vidal.javier.dnd_app_backend.domain.model.User;
 
-public interface UserRepository {
+public interface UserPersistencePort {
 
     List<User> findAll();
 

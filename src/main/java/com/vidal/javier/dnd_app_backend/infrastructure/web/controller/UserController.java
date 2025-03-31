@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.web.controller;
+package com.vidal.javier.dnd_app_backend.infrastructure.web.controller;
 
 import java.util.List;
 import java.util.UUID;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vidal.javier.dnd_app_backend.web.dto.response.UserResponseDTO;
+import com.vidal.javier.dnd_app_backend.infrastructure.web.dto.response.UserResponseDTO;
 
 @RestController
 @RequestMapping("/api/users")

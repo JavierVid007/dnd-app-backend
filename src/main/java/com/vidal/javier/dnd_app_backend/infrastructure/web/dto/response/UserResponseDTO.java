@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.web.dto.response;
+package com.vidal.javier.dnd_app_backend.infrastructure.web.dto.response;
 
 import java.time.LocalDateTime;
 import java.util.List;

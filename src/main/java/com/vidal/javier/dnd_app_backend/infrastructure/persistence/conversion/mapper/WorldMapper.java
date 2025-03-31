@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.infrastructure.conversion.mapper;
+package com.vidal.javier.dnd_app_backend.infrastructure.persistence.conversion.mapper;
 
 import java.util.List;
 

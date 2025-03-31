@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.infrastructure.conversion.service;
+package com.vidal.javier.dnd_app_backend.infrastructure.persistence.conversion.service;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vidal.javier.dnd_app_backend.domain.model.Character;
-import com.vidal.javier.dnd_app_backend.infrastructure.conversion.mapper.CharacterMapper;
+import com.vidal.javier.dnd_app_backend.infrastructure.persistence.conversion.mapper.CharacterMapper;
 import com.vidal.javier.dnd_app_backend.infrastructure.persistence.entity.CharacterEntity;
 
 @Service

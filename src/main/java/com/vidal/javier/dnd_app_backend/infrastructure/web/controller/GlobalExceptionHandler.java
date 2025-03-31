@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.web.controller;
+package com.vidal.javier.dnd_app_backend.infrastructure.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import com.vidal.javier.dnd_app_backend.domain.exception.NotFoundException;
 import com.vidal.javier.dnd_app_backend.infrastructure.exception.DatabaseException;
 import com.vidal.javier.dnd_app_backend.infrastructure.exception.JwtAuthenticationException;
 import com.vidal.javier.dnd_app_backend.infrastructure.exception.StorageException;
-import com.vidal.javier.dnd_app_backend.web.dto.response.ErrorResponseDTO;
+import com.vidal.javier.dnd_app_backend.infrastructure.web.dto.response.ErrorResponseDTO;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

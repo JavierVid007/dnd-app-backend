@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.web.controller;
+package com.vidal.javier.dnd_app_backend.infrastructure.web.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vidal.javier.dnd_app_backend.web.dto.request.LoginRequestDTO;
-import com.vidal.javier.dnd_app_backend.web.dto.request.ChangePasswordRequestDTO;
-import com.vidal.javier.dnd_app_backend.web.dto.response.UserResponseDTO;
+import com.vidal.javier.dnd_app_backend.infrastructure.web.dto.request.ChangePasswordRequestDTO;
+import com.vidal.javier.dnd_app_backend.infrastructure.web.dto.request.LoginRequestDTO;
+import com.vidal.javier.dnd_app_backend.infrastructure.web.dto.response.UserResponseDTO;
 
 @RestController
 @RequestMapping("/api/users/me")

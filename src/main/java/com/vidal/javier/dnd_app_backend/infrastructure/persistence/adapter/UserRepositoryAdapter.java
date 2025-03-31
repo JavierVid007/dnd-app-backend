@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.infrastructure.adapter;
+package com.vidal.javier.dnd_app_backend.infrastructure.persistence.adapter;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.vidal.javier.dnd_app_backend.domain.model.User;
-import com.vidal.javier.dnd_app_backend.domain.repository.UserRepository;
-import com.vidal.javier.dnd_app_backend.infrastructure.conversion.service.UserConversionService;
+import com.vidal.javier.dnd_app_backend.domain.port.UserPersistencePort;
+import com.vidal.javier.dnd_app_backend.infrastructure.persistence.conversion.service.UserConversionService;
 import com.vidal.javier.dnd_app_backend.infrastructure.persistence.repository.UserEntityRepository;
 
 @Repository
-public class UserRepositoryAdapter implements UserRepository {
+public class UserRepositoryAdapter implements UserPersistencePort {
 
     private final UserEntityRepository repository;
     private final UserConversionService conversionService;

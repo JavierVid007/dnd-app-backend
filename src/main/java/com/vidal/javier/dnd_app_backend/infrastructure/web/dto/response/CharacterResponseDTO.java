@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.web.dto.response;
+package com.vidal.javier.dnd_app_backend.infrastructure.web.dto.response;
 
 import java.util.UUID;
 
@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class WorldResponseDTO {
+public class CharacterResponseDTO {
 
     private UUID id;
     private String name;

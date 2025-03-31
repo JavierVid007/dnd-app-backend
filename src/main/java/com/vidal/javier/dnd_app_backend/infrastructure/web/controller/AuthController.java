@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.web.controller;
+package com.vidal.javier.dnd_app_backend.infrastructure.web.controller;
 
 import java.net.URI;
 
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.vidal.javier.dnd_app_backend.web.dto.request.LoginRequestDTO;
-import com.vidal.javier.dnd_app_backend.web.dto.request.RegisterRequestDTO;
-import com.vidal.javier.dnd_app_backend.web.dto.response.AuthResponseDTO;
-import com.vidal.javier.dnd_app_backend.web.dto.response.UserResponseDTO;
+import com.vidal.javier.dnd_app_backend.infrastructure.web.dto.request.LoginRequestDTO;
+import com.vidal.javier.dnd_app_backend.infrastructure.web.dto.request.RegisterRequestDTO;
+import com.vidal.javier.dnd_app_backend.infrastructure.web.dto.response.AuthResponseDTO;
+import com.vidal.javier.dnd_app_backend.infrastructure.web.dto.response.UserResponseDTO;
 
 @RestController
 @RequestMapping("/api/auth")

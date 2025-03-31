@@ -1,4 +1,4 @@
-package com.vidal.javier.dnd_app_backend.web.dto.response;
+package com.vidal.javier.dnd_app_backend.infrastructure.web.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
